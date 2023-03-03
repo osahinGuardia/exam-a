@@ -183,7 +183,7 @@ int ft_verif_region(int grille[9][9], int k, int l){
     int array[9];
     int n = 0;
 
-    if (i=0; i<3;i++){
+    for(i=0; i<3; i++){
         for(i=0; i<3;i++){
             array[n] = grille[i + k][j + l];
             n++;
