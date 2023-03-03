@@ -14,6 +14,43 @@ Write your code in this editor and press "Run" button to compile and execute it.
 // #include <iostream>
 
 
+
+int ft_presentation()
+{
+    printf("\n");
+    printf("          .:~!7777!~^:.          :~~~.              .~~~:     .^~~~~~~~~~~~~^^:.                   .:~!77777~^:.            :~~~.             :~~~~:   .^~~^               ^~~~.\n");
+    printf("       .!5GBBBBBBBBBBBPJ^        ?#BB^              ~BB#7     .GBBBBBBBBBBBBBBBG5?^             :75GBBBBBBBBBBBPY!.         JBBB^           ^YBBBP!.   .GBBP.              5BBG.\n");
+    printf("      ^PBBG?~::...:^!5BBBY.      ?BBB^              ~BBB7     .GBBG^^^^^^^^^~!JPBBB5^         :YBBBGJ!^:...:^7YGBBG?.       ?BBB^         ^YBBBY^      .GBB5.              5BBG.\n");
+    printf("     .GBB5.           ~BB#5.     ?BBB^              ~BBB7     .GBBP.           .~PBBB7       7BBB5~.           .7GBBG^      ?BBB^      .~5BBGJ:        .GBB5.              5BBG.\n");
+    printf("     :BBBJ             !J??.     ?BBB^              ~BBB7     .GBBP.             .5BBB~     7BBBJ.               :PBBB^     ?BBB^    .~5BBG?:          .GBB5.              5BBG.\n");
+    printf("      JBBBY~:..                  ?BBB^              ~BBB7     .GBBP.              :GBBP.   :BBBP.                 :GBBP.    ?BBB^  .!PBBP7.            .GBB5.              5BBG.\n");
+    printf("       ~5BB#BGP5J7!^:..          ?BBB^              ~BBB7     .GBBP.               5BBB:   7BBB7                   YBBB^    ?BBB^.7GBBBB~              .GBB5.              5BBG.\n");
+    printf("         :~?YPGBBB#BBGPJ~.       ?BBB^              ~BBB7     .GBBP.               YBBB^   JBBB~                   ?BBB!    ?BBBYGBB55BBB?.            .GBB5.              5BBG.\n");
+    printf("              ..:^!?YPBBBG?.     ?BBB^              ~BBB7     .GBBP.               5BBB:   ?BBB!                   JBBB~    ?BBBBBY^  !GBBP~           .GBB5               5BBG.\n");
+    printf("    .::^.            .:?BBBJ     7BBB~              !BBB!     .GBBP.              :GBBP.   ^BBB5                  .GBBG.    ?BBBY:     :5BBBY.         .GBBP.             .PBBG.\n");            
+    printf("    :BBBJ               YBBG.    ~BBBJ              YBBB^     .GBBP.             .YBBB~     ?BBB?                .5BBB~     ?BBB^        !GBBG!         5BBB:             :BBB5 \n");            
+    printf("     JBBB?.            ^GBB5     .PBBB!            7BBB5      .GBBP.            :5BBB7       ?BBBY:            .~PBBB!      ?BBB^         :5BBB5:       ~BBB5.           .5BBB~ \n");            
+    printf("     .7GBBGJ~:......:~JBBB5.      :PBBB57^:....:^75BBB5.      .GBBP:.....:::^~75BBBP~         ^5BBB57^:.....:~?PBBBY:       ?BBB^          .7GBBG7.      !BBBGJ~:.....:~?GBBG!  \n");            
+    printf("       :?PBB#BBGGGGBB#BGY~         .!5GB#BBBGGBBB#BGY~        .GBBBBBBBBBBBBBBBBPJ~.           .^?PBBBBGGGGGBBBB5?:         J#BB^            :5BB#P^      :?PBB#BBGGBBB#BBP?:   \n");            
+    printf("         .:^!7JJYYJJ7~:.              .^!7JJYYJJ7!^.          .!777777777777!~^:.                 .:^!?JYYJJ7!^.            ^777:             .!7777.       .:~7?JJYJJ?7~:.     \n");            
+
+    printf("\n");
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 Pour l'exercice vous aurez besoin de generer des entiers aléatoire : rand() renvoit un entier aléatoire.
 il s'utilise : rand() % NOMBREMAX + 1, ça oui je veut bien
@@ -28,8 +65,14 @@ voir dans la methode main. yes
 
 // Ecrire la fonction generer(), elle prend en paramètre la grille et renvoie le nombre d'éléments non nuls. ???
 
-int ft_generer_cases_vide(){
+int ft_generer_cases_vide(grille){
     
+    int nb, difficulte = 3;
+    int i, j, v;
+    
+    for(nb = 0; nb <difficulte; nb++){
+        i = rand()
+    }
     return 0;
 }
 
@@ -47,7 +90,7 @@ int ft_retry(){
     return restart;
 }
 
-int ft_verif_bonne_saisi(i,j,v){
+int ft_verif_bonne_saisi(i,j,v,grille){
     if (i<=9){
         if (j<=9){
             if (v<=9){
@@ -56,17 +99,17 @@ int ft_verif_bonne_saisi(i,j,v){
             }else{
                 printf("! Vous avez choisi une mauvaise colonne 〔・╭╮・〕\n");
                 if (1 == ft_retry())
-                    ft_saisir();
+                    ft_saisir(grille);
             }
         }else{
             printf("! Vous avez choisi une mauvaise ligne 〔・╭╮・〕\n");
             if (1 == ft_retry())
-                ft_saisir();
+                ft_saisir(grille);
         }
     }else{
         printf("! Vous avez choisi une mauvaise valeur 〔・╭╮・〕\n");
         if (1 == ft_retry())
-            ft_saisir();
+            ft_saisir(grille);
     }
     return 0;
 }
@@ -87,10 +130,10 @@ int ft_saisir(grille){
     printf("Allez-y :");
     scanf("%d %d %d", &j, &i, &v);
         
-    if (ft_verif_bonne_saisi(i,j,v) == 1){
+    if (ft_verif_bonne_saisi(i,j,v,grille) == 1){
         printf("Vous avez choisi la case %d-%d, et la valeur %d", j, i, v);
-        if (ft_verif_busy(i,j,v) == 1)
-            grille[i][j] = v;
+        // if (ft_verif_busy(i,j,v) == 1)
+            //grille[i][j] = v;
     }
     
     
@@ -117,36 +160,39 @@ et qui renvoie 1 si la région est correctement remplie, 0 sinon.
 
 
 int main(){
+    
+    ft_presentation();
     // Ne pas toucher le code entre les commentaires
-    srand( time( NULL ) );
+    // srand( time( NULL ) );
 
 
     int i, j, k;
     int solution[9][9];
-    printf("SOLUTION");  
-    printf("\n");  
-    printf("---------------------------------");  
-    printf("\n");  
+    // printf("SOLUTION");  
+    // printf("\n");  
+    // printf("---------------------------------");  
+    // printf("\n");  
     for(j=0;j<9; ++j) 
     {
     for(i=0; i<9; ++i)
         solution[j][i] = (i + j*3 +j /3) %9 +1 ; 
     }
     
-    for(i=0;i<9; ++i) 
-    {
-        for(j=0; j<9; ++j)
-            printf("%d ", solution[i][j]);
-        printf("\n");  
-    }
-    printf("---------------------------------");  
-    printf("\n");  
+    // for(i=0;i<9; ++i) 
+    // {
+    //     for(j=0; j<9; ++j)
+    //         printf("%d ", solution[i][j]);
+    //     printf("\n");  
+    // }
+    // printf("---------------------------------");  
+    // printf("\n");  
     //toucher le code entre les commentaires 
     
     printf("%d \n",rand() % 2);
     printf("%d \n",rand() % 9 + 1);    
     
-    ft_generer();
+    
+    ft_generer_cases_vide(solution);
     ft_saisir(solution);
 
 
