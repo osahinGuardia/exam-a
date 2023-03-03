@@ -210,8 +210,8 @@ int ft_verif_grille(int grille[9][9]){
     bool colonne = false;
 
     //verif diago
-    for (int i=3, i<9, i+=3){
-        for (int j=3, j<9, j+=3){
+    for (int i=3; i<9; i+=3){
+        for (int j=3; j<9; j+=3){
             if (ft_verif_region(grille, i, j) == 0){
                 diagonale = true;
             }
@@ -219,7 +219,7 @@ int ft_verif_grille(int grille[9][9]){
     }
 
     //verif ligne
-    for (int i=0, i<9, i++){
+    for (int i=0; i<9; i++){
         
         if (ft_verif_lc(grille, i, 0) == 0){
             ligne = true;
