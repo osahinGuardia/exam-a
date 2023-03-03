@@ -68,14 +68,14 @@ voir dans la methode main. yes
 int ft_generer_cases_vide(grille){
     
     int nb, difficulte = 3;
-    int i, j;
+    int *i, *j;
     
     for(nb = 0; nb <difficulte; nb++){
         i = rand() % 9 + 1;
         j = rand() % 9 + 1;
         grille[i][j] = 0;
     }
-    return 0;
+    return grille;
 }
 
 // Ce lien vous sera utile : https://www.geeksforgeeks.org/pass-2d-array-parameter-c/
@@ -85,14 +85,14 @@ int ft_generer_cases_vide(grille){
 La fonction doit vérifier la validité des indices et de la valeur.ok
 Si la case n’est pas occupée, la valeur doit être placée dans la grille. remplissage est alors incrémentée*/
 
-int ft_retry(){
+int ft_retry(){//ok
     int restart;
     printf("Voulez-vous continuer et retenter ? [1 = oui, 0 = non] :");
     scanf("%d", &restart);
     return restart;
 }
 
-int ft_verif_bonne_saisi(i,j,v,grille){
+int ft_verif_bonne_saisi(i,j,v,grille){//ok
     if (i<=9){
         if (j<=9){
             if (v<=9){
@@ -116,12 +116,10 @@ int ft_verif_bonne_saisi(i,j,v,grille){
     return 0;
 }
 
-int ft_verif_busy(i,j,v){
-    
-}
 
 
-int ft_saisir(grille){
+
+int ft_saisir(int grille[9][9]){//ok
     
     int i=0, j=0, v=40; //restart=1;
     
@@ -134,8 +132,10 @@ int ft_saisir(grille){
         
     if (ft_verif_bonne_saisi(i,j,v,grille) == 1){
         printf("Vous avez choisi la case %d-%d, et la valeur %d", j, i, v);
-        // if (ft_verif_busy(i,j,v) == 1)
-            //grille[i][j] = v;
+        if (grille[i][j] == 0)
+            grille[i][j] = v;
+        else
+            printf("La case est déjà prise");
     }
     
     
@@ -149,6 +149,54 @@ On pourra utiliser un tableau intermédiaire pour vérifier cela. La fonction re
  Les constantes HORIZ de valeur 0 et VERT de valeur 1 sont à définir.
 */
 
+int ft_verif_lc(int grille[9][9], int value, int sens){
+    int i;
+    int array[9];
+    if (sens ==0){
+        for(i=
+        0; i<9;i++)
+    }
+}
+
+
+int ft_verif_region(int grille[9][9], int k, int l){
+
+}
+
+int ft_verif_grille(int grille[9][9]){
+
+    bool diagonale = false;
+    bool ligne = false;
+    bool colonne = false;
+
+    //verif diago
+    for (int i=3, i<9, i+=3){
+        for (int j=3, j<9, j+=3){
+            if (ft_verif_region(grille, i, j) == 0){
+                diagonale = true;
+            }
+        }
+    }
+
+    //verif ligne
+    for (int i=0, i<9, i++){
+        
+        if (ft_verif_lc(grille, i, 0) == 0){
+            ligne = true;
+        }
+        if (ft_verif_lc(grille, i, 1) == 0){
+            colonne = true;
+        }
+    
+    }
+
+    //result 
+    if ( diagonale && ligne && colonne){
+        return 0;
+    }else{
+        return 1;
+    }
+}
 
 /*
 Écrire la fonction verifierRegion() qui prend en paramètre deux indices k et l qui correspondent à la région (k,l)
@@ -162,7 +210,7 @@ et qui renvoie 1 si la région est correctement remplie, 0 sinon.
 
 void ft_afficher_grille(grille, solution){
     
-    int wantGrilleOrSolution, i, j;
+    int wantGrilleOrSolution, *i, *j;
     printf("\n Afficher la grille = 2 | Afficher la solution = 1 | Ne pas afficher = 0 : \n");
     scanf("%d", &wantGrilleOrSolution);
     
@@ -201,10 +249,9 @@ void ft_afficher_grille(grille, solution){
 
 
 int main(){
-    
     ft_presentation();
     // Ne pas toucher le code entre les commentaires
-    // srand( time( NULL ) );
+    srand( time( NULL ) );
 
 
     int i, j, k;
@@ -230,14 +277,20 @@ int main(){
     // printf("\n");  
     //toucher le code entre les commentaires 
     
-    printf("%d \n",rand() % 2);
-    printf("%d \n",rand() % 9 + 1);    
+    // printf("%d \n",rand() % 2);
+    // printf("%d \n",rand() % 9 + 1);    
     
-    grille = ft_generer_cases_vide(solution);
-    
-    ft_afficher_grille(grille, solution);
-    ft_saisir(grille);
+   
+    int réussi = 0;
 
+    while(réussi == 0){
+        ft_afficher_grille(ft_generer_cases_vide(solution), solution);
+        ft_saisir(grille);
+        //validation / réussi 
+    }
+    
+    
+    printf("Bravo !");
 
 
     //Ne pas toucher au code ci dessous
