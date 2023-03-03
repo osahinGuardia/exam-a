@@ -68,10 +68,12 @@ voir dans la methode main. yes
 int ft_generer_cases_vide(grille){
     
     int nb, difficulte = 3;
-    int i, j, v;
+    int i, j;
     
     for(nb = 0; nb <difficulte; nb++){
-        i = rand()
+        i = rand() % 9 + 1;
+        j = rand() % 9 + 1;
+        grille[i][j] = 0;
     }
     return 0;
 }
@@ -158,6 +160,45 @@ et qui renvoie 1 si la région est correctement remplie, 0 sinon.
 
 //Écrire le programme principal, en supposant que la seule condition d’arrêt est la réussite du sudoku (ce test ne devra être fait que si nécessaire)
 
+void ft_afficher_grille(grille, solution){
+    
+    int wantGrilleOrSolution, i, j;
+    printf("\n Afficher la grille = 2 | Afficher la solution = 1 | Ne pas afficher = 0 : \n");
+    scanf("%d", &wantGrilleOrSolution);
+    
+    if (wantGrilleOrSolution == 2){
+        printf("GRILLE");  
+        printf("\n");  
+        printf("---------------------------------");  
+        printf("\n");  
+        
+        for(i=0;i<9; ++i) 
+        {
+            for(j=0; j<9; ++j)
+                printf("%d ", grille[i][j]);
+            printf("\n");  
+        }
+        printf("---------------------------------");  
+        printf("\n");  
+    }
+    if (wantGrilleOrSolution == 1){
+        printf("SOLUTION");  
+        printf("\n");  
+        printf("---------------------------------");  
+        printf("\n");  
+        
+        for(i=0;i<9; ++i) 
+        {
+            for(j=0; j<9; ++j)
+                printf("%d ", solution[i][j]);
+            printf("\n");  
+        }
+        printf("---------------------------------");  
+        printf("\n");  
+    }
+}
+
+
 
 int main(){
     
@@ -168,14 +209,15 @@ int main(){
 
     int i, j, k;
     int solution[9][9];
+    int grille[9][9];
     // printf("SOLUTION");  
     // printf("\n");  
     // printf("---------------------------------");  
     // printf("\n");  
     for(j=0;j<9; ++j) 
     {
-    for(i=0; i<9; ++i)
-        solution[j][i] = (i + j*3 +j /3) %9 +1 ; 
+        for(i=0; i<9; ++i)
+            solution[j][i] = (i + j*3 +j /3) %9 +1 ; 
     }
     
     // for(i=0;i<9; ++i) 
@@ -191,9 +233,10 @@ int main(){
     printf("%d \n",rand() % 2);
     printf("%d \n",rand() % 9 + 1);    
     
+    grille = ft_generer_cases_vide(solution);
     
-    ft_generer_cases_vide(solution);
-    ft_saisir(solution);
+    ft_afficher_grille(grille, solution);
+    ft_saisir(grille);
 
 
 
