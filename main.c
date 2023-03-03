@@ -324,7 +324,7 @@ int main(){
     int réussi = 0;
 
     while(réussi == 0){
-        ft_afficher_grille(ft_generer_cases_vide(solution), solution);
+        ft_afficher_grille(ft_generer_cases_vide(solution), solution); // c'est la que ça bug
         ft_saisir(grille);
         réussi = ft_verif_grille(grille);
     }
