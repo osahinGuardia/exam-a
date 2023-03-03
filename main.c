@@ -16,9 +16,9 @@ Write your code in this editor and press "Run" button to compile and execute it.
 
 /*
 Pour l'exercice vous aurez besoin de generer des entiers aléatoire : rand() renvoit un entier aléatoire.
-il s'utilise : rand() % NOMBREMAX + 1 
-Pour un entier aléatoire entre 0 et 1 il faut donc faire rand() %2
-voir dans la methode main.
+il s'utilise : rand() % NOMBREMAX + 1, ça oui je veut bien
+Pour un entier aléatoire entre 0 et 1 il faut donc faire rand() %2.mais ça pour quoi faire ??
+voir dans la methode main. yes
 */
 
 
@@ -28,7 +28,7 @@ voir dans la methode main.
 
 // Ecrire la fonction generer(), elle prend en paramètre la grille et renvoie le nombre d'éléments non nuls. ???
 
-int ft_generer(){
+int ft_generer_cases_vide(){
     
     return 0;
 }
@@ -47,6 +47,35 @@ int ft_retry(){
     return restart;
 }
 
+int ft_verif_bonne_saisi(i,j,v){
+    if (i<=9){
+        if (j<=9){
+            if (v<=9){
+                return 1;
+                
+            }else{
+                printf("! Vous avez choisi une mauvaise colonne 〔・╭╮・〕\n");
+                if (1 == ft_retry())
+                    ft_saisir();
+            }
+        }else{
+            printf("! Vous avez choisi une mauvaise ligne 〔・╭╮・〕\n");
+            if (1 == ft_retry())
+                ft_saisir();
+        }
+    }else{
+        printf("! Vous avez choisi une mauvaise valeur 〔・╭╮・〕\n");
+        if (1 == ft_retry())
+            ft_saisir();
+    }
+    return 0;
+}
+
+int ft_verif_busy(i,j,v){
+    
+}
+
+
 int ft_saisir(grille){
     
     int i=0, j=0, v=40; //restart=1;
@@ -58,31 +87,13 @@ int ft_saisir(grille){
     printf("Allez-y :");
     scanf("%d %d %d", &j, &i, &v);
         
-    if (i<=9){
-        if (j<=9){
-            if (v<=9){
-                printf("Vous avez choisi la case %d-%d, et la valeur %d", j, i, v);
-            }else{
-                printf("! Vous avez choisi une mauvaise colonne 〔・╭╮・〕\n");
-                if (1 == ft_retry())
-                    ft_saisir();
-            }
-        }else{
-            printf("! Vous avez choisi une mauvaise ligne 〔・╭╮・〕\n");
-            if (1 == ft_retry())
-                    ft_saisir();
-        }
-        
-    }else{
-        printf("! Vous avez choisi une mauvaise valeur 〔・╭╮・〕\n");
-        if (1 == ft_retry())
-                    ft_saisir();
+    if (ft_verif_bonne_saisi(i,j,v) == 1){
+        printf("Vous avez choisi la case %d-%d, et la valeur %d", j, i, v);
+        if (ft_verif_busy(i,j,v) == 1)
+            grille[i][j] = v;
     }
     
     
-    
-    
-    // return nbNotNul;
     return 0;
 }
 
