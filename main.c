@@ -12,6 +12,8 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <stdlib.h>
 #include <time.h>
 // #include <iostream>
+#define HORIZ 0
+#define VERT 1
 
 
 
@@ -153,14 +155,52 @@ int ft_verif_lc(int grille[9][9], int value, int sens){
     int i;
     int array[9];
     if (sens ==0){
-        for(i=
-        0; i<9;i++)
+        for(i=0; i<9;i++){
+            array[i] = grille[i][value];
+        }
+    } else if (sens ==0){
+        for(i=0; i<9;i++){
+            array[i] = grille[value][i];
+        }
+    }
+
+    int somme = 0;
+    for(i=0; i<9;i++){
+        somme += array[i];
+    }
+
+    if (somme == 45){
+        return 1;
+
+    }else {
+        return 0;
     }
 }
 
 
 int ft_verif_region(int grille[9][9], int k, int l){
+    int i, j;
+    int array[9];
+    int n = 0;
 
+    if (i=0; i<3;i++){
+        for(i=0; i<3;i++){
+            array[n] = grille[i + k][j + l];
+            n++;
+        }
+    }
+
+    int somme = 0;
+    for(i=0; i<9;i++){
+        somme += array[i];
+    }
+
+    if (somme == 45){
+        return 1;
+
+    }else {
+        return 0;
+    }
 }
 
 int ft_verif_grille(int grille[9][9]){
@@ -192,9 +232,9 @@ int ft_verif_grille(int grille[9][9]){
 
     //result 
     if ( diagonale && ligne && colonne){
-        return 0;
-    }else{
         return 1;
+    }else{
+        return 0;
     }
 }
 
@@ -286,7 +326,7 @@ int main(){
     while(réussi == 0){
         ft_afficher_grille(ft_generer_cases_vide(solution), solution);
         ft_saisir(grille);
-        //validation / réussi 
+        réussi = ft_verif_grille(grille);
     }
     
     
